@@ -56,9 +56,6 @@ get '/api/post/:user_id' do
   result.to_json
 end
 
-put '/api/post/:id' do
-
-end
 
 get '/api/trendings' do
   controller = PostController.new
