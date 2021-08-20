@@ -70,5 +70,17 @@ describe Post do
         expect(post.valid?).to eq(true)
       end
     end
+
+    context 'when initializerd with valid input' do
+      it 'should return true' do
+        post = Post.new({
+                          caption: "Saya akan semangat",
+                          user_id: 1,
+                          hastag: "#GenerasiGIGIH",
+                          attachment: "./media/data.csv"
+                        })
+        expect(post.valid?).to eq(true)
+      end
+    end
   end
 end
