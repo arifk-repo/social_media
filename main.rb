@@ -2,6 +2,7 @@ require 'sinatra'
 require 'json'
 require './controllers/user_controller'
 require './controllers/post_controller'
+require './controllers/comment_controller'
 
 before do
   content_type :json
@@ -59,11 +60,22 @@ put '/api/post/:id' do
 
 end
 
-delete '/api/post/:id' do
+get '/api/trendings' do
+  controller = PostController.new
+  controller.get_trendings
+end
 
+get '/api/post/search/:hashtag' do
+  controller = PostController.new
+  result = controller.get_post_by_hashtag('#'+params['hashtag'])
 end
 
 post '/api/post/' do
   controller = PostController.new
   result = controller.create_post(params)
+end
+
+post '/api/post/comment' do
+  controller = CommentController.new
+  result = controller.create_comment(params)
 end
