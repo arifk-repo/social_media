@@ -14,9 +14,19 @@ describe Post do
         post = Post.get_post_by_user_id(3)
         expect(post[:post]).to be_nil
       end
+    end
 
+    context 'when get trending' do
+      it 'should return all trendings' do
+        post = Post.get_trendings
+        puts post
+        puts post[:trendings]
+        expect(post[:trendings]).not_to be_nil
+      end
     end
   end
+
+
   describe '#valid?' do
     context 'when initializerd with valid input without attachment and hastag' do
       it 'should return true' do
