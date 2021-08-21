@@ -19,11 +19,24 @@ describe Post do
     context 'when get trending' do
       it 'should return all trendings' do
         post = Post.get_trendings
-        puts post
-        puts post[:trendings]
         expect(post[:trendings]).not_to be_nil
       end
     end
+
+    context 'when get post' do
+      it 'should return all post' do
+        post = Post.get_post
+        expect(post[:post]).not_to be_nil
+      end
+    end
+
+    context 'when get post by hastag' do
+      it 'should return post related to hastag' do
+        post = Post.get_post_by_hashtag('#gigih')
+        expect(post[:post]).not_to be_nil
+      end
+    end
+
   end
 
 
