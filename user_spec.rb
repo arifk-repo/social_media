@@ -2,11 +2,19 @@ require 'simplecov'
 SimpleCov.start
 require './models/user'
 require './models/post'
+require './db/db_connector'
 
 describe User do
   describe '#valid?' do
+    context 'get user by id' do
+      it 'should return not nil' do
+        user = User.get_user_by_id(1)
+        expect(user).not_to be_nil
+      end
+
+    end
     context 'when initializerd with valid input' do
-      it 'should return true' do
+      it 'should return update' do
         user = User.new({
                           username: "thomas12",
                           email: "thomas12@gmail.com",
@@ -42,6 +50,18 @@ describe User do
                           username: "thomas12",
                           bio: "thomas adalah teman arif"
                         })
+        expect(user.valid?).to eq(false)
+      end
+    end
+
+    context 'when initializerd with invalid email' do
+      it 'should return false' do
+        client = connect_database
+        user2 =
+          user = User.new({
+                            username: "thomas12",
+                            bio: "thomas adalah teman arif"
+                          })
         expect(user.valid?).to eq(false)
       end
     end
