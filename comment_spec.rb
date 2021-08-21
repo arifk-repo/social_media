@@ -32,6 +32,17 @@ describe Comment do
         expect(comment.valid?).to eq(true)
       end
 
+      it 'should return true when add hashtag and attachment' do
+        comment = Comment.new({
+                                id_post: 1,
+                                username: "aikriwn",
+                                comment: "semangat",
+                                hastag: "#pastibisa",
+                                attachment: "./media/data.csv"
+                              })
+        expect(comment.valid?).to eq(true)
+      end
+
     end
   end
 end
