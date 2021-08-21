@@ -4,6 +4,21 @@ require './models/post'
 
 describe Post do
   describe '#return data?' do
+    context 'when initializerd with valid input' do
+      it 'should return true' do
+        post = Post.new({
+                          caption: "Saya akan semangat",
+                          user_id: 1,
+                          hastag: "#GenerasiGIGIH",
+                          attachment: "./media/data.csv"
+                        })
+        expect(post.save).to eq({
+                                  "success" => true,
+                                  "message" => "Success Add Data"
+                                }.to_json)
+      end
+    end
+
     context 'when get post by user id' do
       it 'should return all post created by user' do
         post = Post.get_post_by_user_id(1)
