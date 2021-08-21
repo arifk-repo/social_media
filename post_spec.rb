@@ -9,6 +9,12 @@ describe Post do
         post = Post.get_post_by_user_id(1)
         expect(post[:post]).not_to be_nil
       end
+
+      it 'should return nil' do
+        post = Post.get_post_by_user_id(3)
+        expect(post[:post]).to be_nil
+      end
+
     end
   end
   describe '#valid?' do
