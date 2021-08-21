@@ -6,6 +6,18 @@ require './db/db_connector'
 
 describe User do
   describe '#valid?' do
+    context 'update user' do
+      it 'should not raise error' do
+        user = User.update_user({
+                                  id: 2,
+                                  username: "thomas13",
+                                  email: "thomas12@gmail.com",
+                                  bio: "thomas adalah teman arif"
+                                })
+        expect(user).to eq(true)
+      end
+    end
+
     context 'get user by id' do
       it 'should return not nil' do
         user = User.get_user_by_id(1)
