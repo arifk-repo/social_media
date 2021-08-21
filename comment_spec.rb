@@ -13,6 +13,14 @@ describe Comment do
                         })
         expect(comment.valid?).to eq(true)
       end
+
+      it 'should return false when not have params comment' do
+        comment = Comment.new({
+                                id_post: 1,
+                                username: "aikriwn"
+                              })
+        expect(comment.valid?).to eq(false)
+      end
     end
   end
 end
